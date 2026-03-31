@@ -39,69 +39,87 @@
         <div class="specs-grid">
             <div class="spec-card">
                 <div class="spec-header">الاقتصادية</div>
+                <p class="price-tag">1,200 درهم</p>
                 <ul>
                     <li><i class="fas fa-chair"></i> كرسي مريح ومبطن</li>
                     <li><i class="fas fa-tv"></i> شاشة أمامية متكاملة</li>
-                    <li><i class="fas fa-utensils"></i> طعام على مدار الساعة</li>
                 </ul>
             </div>
             <div class="spec-card featured">
                 <div class="spec-header">السياحية</div>
+                <p class="price-tag">1,500 درهم</p>
                 <ul>
                     <li><i class="fas fa-couch"></i> كرسي مع وضعيات متغيرة</li>
                     <li><i class="fas fa-desktop"></i> شاشة متكاملة متطورة</li>
-                    <li><i class="fas fa-clock"></i> خدمة سريعة متميزة</li>
                 </ul>
             </div>
             <div class="spec-card">
                 <div class="spec-header">الفاخرة</div>
+                <p class="price-tag">12,950 درهم</p>
                 <ul>
                     <li><i class="fas fa-bed"></i> وضعية النوم الكامل + مساج</li>
-                    <li><i class="fas fa-star"></i> طعام حسب الشهية (A La Carte)</li>
-                    <li><i class="fas fa-tv"></i> شاشة أمامية ضخمة</li>
+                    <li><i class="fas fa-star"></i> طعام حسب الشهية</li>
                 </ul>
             </div>
             <div class="spec-card royal-card">
                 <div class="spec-header">الملكية</div>
+                <p class="price-tag">40,842 درهم</p>
                 <ul>
                     <li><i class="fas fa-hotel"></i> جناح خاص مع سرير حقيقي</li>
                     <li><i class="fas fa-shower"></i> حمام خاص مع شاور</li>
-                    <li><i class="fas fa-lightbulb"></i> تحكم كامل في الأنوار</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section class="auth-container">
-        <div class="login-box">
-            <h3>مرحباً بك مسافرنا العزيز</h3>
-            <p>أدخل بياناتك للحصول على ترشيحات مخصصة</p>
-            <input type="text" id="userName" placeholder="الاسم الكامل">
-            <select id="income-select">
-                <option value="">اختر فئة الدخل السنوي/الشهري</option>
-                <option value="economy">أقل من 1,500 درهم</option>
-                <option value="tourism">أقل من 2,000 درهم</option>
-                <option value="luxury">12,000 درهم فأعلى</option>
-                <option value="royal">35,000 درهم فأعلى</option>
+        <div class="login-box booking-form">
+            <h3><i class="fas fa-user-edit"></i> بيانات المسافر والحجز</h3>
+            <p>يرجى إدخال بياناتك بدقة لتأكيد التذكرة</p>
+            
+            <input type="text" id="userName" placeholder="الاسم الكامل" required>
+            <input type="email" id="userEmail" placeholder="البريد الإلكتروني" required>
+            <input type="tel" id="userPhone" placeholder="رقم الهاتف (05xxxxxxxx)" required>
+            
+            <div class="date-group">
+                <label>اختر تاريخ السفر:</label>
+                <input type="date" id="flightDate" required>
+            </div>
+
+            <select id="classSelect" onchange="calculateTotal()">
+                <option value="0">تحديد فئة المقعد</option>
+                <option value="1200">الاقتصادية (1,200 درهم)</option>
+                <option value="1500">السياحية (1,500 درهم)</option>
+                <option value="12950">الفاخرة (12,950 درهم)</option>
+                <option value="40842">الملكية (40,842 درهم)</option>
             </select>
-            <button onclick="recommendClass()">تحقق من الفئة المناسبة</button>
-            <div id="recommendationResult" class="res-box"></div>
+
+            <div class="counter-group">
+                <label>عدد المقاعد:</label>
+                <input type="number" id="seatCount" min="1" value="1" oninput="calculateTotal()">
+            </div>
+
+            <div class="price-summary">
+                الإجمالي المطلوب: <span id="tempTotal">0</span> درهم
+            </div>
+            
+            <button class="btn-main" onclick="scrollToSeats()">اختيار مكان المقعد من الخريطة</button>
         </div>
     </section>
 
     <section id="booking" class="booking-section">
         <div class="section-title">
             <h2>خريطة المقاعد التفاعلية</h2>
-            <p>اختر مكانك المفضل في قمرة القيادة</p>
+            <p>اختر مقعدك المفضل (سيتم حساب السعر بناءً على اختيارك أعلاه)</p>
         </div>
         <div class="airplane-body">
             <div class="cockpit"></div>
             <div class="seats-grid" id="seatMap"></div>
         </div>
         <div class="booking-details">
-            <p>المقعد المحدد: <span id="selectedSeatNum">-</span></p>
-            <p>إجمالي السعر: <span id="totalPrice">0</span> درهم</p>
-            <button class="pay-btn" onclick="processPayment()">تأكيد ودفع</button>
+            <p>عدد المقاعد المختارة على الخريطة: <span id="selectedSeatNum">0</span></p>
+            <p>السعر النهائي المؤكد: <span id="totalPrice">0</span> درهم</p>
+            <button class="pay-btn" onclick="processPayment()">تأكيد ودفع الرسوم</button>
         </div>
     </section>
 
@@ -110,45 +128,13 @@
             <div class="ticket-header-design">SKYMASTER BOARDING PASS</div>
             <div class="ticket-info">
                 <p><strong>المسافر:</strong> <span id="ticket-name"></span></p>
-                <p><strong>المقعد:</strong> <span id="ticket-seat"></span></p>
                 <p><strong>الدرجة:</strong> <span id="ticket-class"></span></p>
-                <p><strong>البوابة:</strong> A12</p>
+                <p><strong>التاريخ:</strong> <span id="ticket-date"></span></p>
+                <p><strong>المقاعد:</strong> <span id="ticket-seat"></span></p>
             </div>
             <div class="barcode">|||| | || ||| | || ||| |</div>
         </div>
     </section>
-
-    <section id="menu" class="menu-section">
-        <h2>مطبخ SkyMaster</h2>
-        <div class="menu-container">
-            <div class="menu-card">
-                <div class="menu-img m1"></div>
-                <h3>قائمة Royal Dining</h3>
-                <p>كافيار، ستيك مشوي، وعصائر طبيعية طوال الرحلة.</p>
-            </div>
-            <div class="menu-card">
-                <div class="menu-img m2"></div>
-                <h3>قائمة الوجبات الخفيفة</h3>
-                <p>ساندوتشات فاخرة وفاكهة طازجة متاحة للجميع.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="contact-form">
-            <h2>مركز سعادة المسافرين</h2>
-            <form id="complaintForm">
-                <input type="text" placeholder="رقم الرحلة" required>
-                <textarea placeholder="كيف يمكننا مساعدتك؟" rows="4" required></textarea>
-                <button type="submit">إرسال الطلب</button>
-            </form>
-            <div id="successMsg" style="display:none; color: #d4af37; margin-top: 20px;">تم إرسال طلبك بنجاح، فريق SkyMaster سيتواصل معك.</div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 SkyMaster Airlines. جميع الحقوق محفوظة.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
