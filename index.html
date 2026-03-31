@@ -3,58 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyMaster | فخامة التحليق</title>
+    <title>SkyMaster | ريادة الطيران الفاخر</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <div class="logo">SkyMaster</div>
+        <div class="logo">SKYMASTER</div>
         <nav>
             <ul>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#classes">الدرجات</a></li>
+                <li><a href="#about">الرئيسية</a></li>
+                <li><a href="#classes">درجاتنا</a></li>
                 <li><a href="#booking">الحجز</a></li>
-                <li><a href="#contact">الشكاوى</a></li>
+                <li><a href="#menu">المطبخ</a></li>
+                <li><a href="#contact">الدعم</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="about" class="hero">
-        <h1>مرحباً بكم في SkyMaster</h1>
-        <p>تجربة سفر تفوق الخيال تناسب جميع تطلعاتك</p>
+        <div class="hero-content">
+            <h1>تحلّق كالملوك مع SkyMaster</h1>
+            <p>نصمم رحلتك بناءً على طموحاتك.. من الاقتصادية الذكية إلى الأجنحة الملكية.</p>
+            <a href="#booking" class="btn-gold">احجز رحلتك الآن</a>
+        </div>
     </section>
 
-    <section class="login-section">
+    <section class="auth-container">
         <div class="login-box">
-            <h3>تسجيل الدخول / إنشاء حساب</h3>
-            <input type="text" placeholder="الاسم الكامل">
+            <h3>مرحباً بك مسافرنا العزيز</h3>
+            <p>أدخل بياناتك للحصول على ترشيحات مخصصة</p>
+            <input type="text" id="userName" placeholder="الاسم الكامل">
             <select id="income-select">
-                <option value="">اختر فئة الدخل (لترشيح الدرجة)</option>
+                <option value="">اختر فئة الدخل السنوي/الشهري</option>
                 <option value="economy">أقل من 1,500 درهم</option>
                 <option value="tourism">أقل من 2,000 درهم</option>
                 <option value="luxury">12,000 درهم فأعلى</option>
                 <option value="royal">35,000 درهم فأعلى</option>
             </select>
-            <button onclick="checkClass()">دخول</button>
+            <button onclick="recommendClass()">تحقق من الفئة المناسبة</button>
+            <div id="recommendationResult" class="res-box"></div>
         </div>
     </section>
 
     <section id="booking" class="booking-section">
-        <h2>اختر مقعدك في طائرة SkyMaster</h2>
-        <div class="airplane-map" id="map">
-            </div>
-        <div class="legend">
-            <span class="l-royal">الملكية</span>
-            <span class="l-luxury">الفاخرة</span>
-            <span class="l-tourism">السياحية</span>
-            <span class="l-eco">الاقتصادية</span>
+        <div class="section-title">
+            <h2>خريطة المقاعد التفاعلية</h2>
+            <p>اختر مكانك المفضل في قمرة القيادة</p>
+        </div>
+        <div class="airplane-body">
+            <div class="cockpit"></div>
+            <div class="seats-grid" id="seatMap"></div>
+        </div>
+        <div class="booking-details">
+            <p>المقعد المحدد: <span id="selectedSeatNum">-</span></p>
+            <p>إجمالي السعر: <span id="totalPrice">0</span> درهم</p>
+            <button class="pay-btn" onclick="openPayment()">تأكيد ودفع</button>
         </div>
     </section>
 
-    <section class="payment-section">
-        <button class="pay-btn" onclick="processPayment()">تأكيد الحجز والدفع</button>
+    <section id="menu" class="menu-section">
+        <h2>مطبخ SkyMaster</h2>
+        <div class="menu-container">
+            <div class="menu-card">
+                <div class="menu-img m1"></div>
+                <h3>قائمة Royal Dining</h3>
+                <p>كافيار، ستيك مشوي، وعصائر طبيعية طوال الرحلة.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img m2"></div>
+                <h3>قائمة الوجبات الخفيفة</h3>
+                <p>ساندوتشات فاخرة وفاكهة طازجة متاحة للجميع.</p>
+            </div>
+        </div>
     </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-form">
+            <h2>مركز سعادة المسافرين</h2>
+            <form id="complaintForm">
+                <input type="text" placeholder="رقم الرحلة" required>
+                <textarea placeholder="كيف يمكننا مساعدتك؟" rows="4" required></textarea>
+                <button type="submit">إرسال الطلب</button>
+            </form>
+            <div id="successMsg" style="display:none; color: #d4af37; margin-top: 20px;">تم إرسال طلبك بنجاح، فريق SkyMaster سيتواصل معك.</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SkyMaster Airlines. جميع الحقوق محفوظة.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
