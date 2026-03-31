@@ -6,6 +6,7 @@
     <title>SkyMaster | ريادة الطيران الفاخر</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -27,6 +28,47 @@
             <h1>تحلّق كالملوك مع SkyMaster</h1>
             <p>نصمم رحلتك بناءً على طموحاتك.. من الاقتصادية الذكية إلى الأجنحة الملكية.</p>
             <a href="#booking" class="btn-gold">احجز رحلتك الآن</a>
+        </div>
+    </section>
+
+    <section id="classes" class="details-section">
+        <div class="section-title">
+            <h2>اكتشف فخامة مقاعدنا</h2>
+            <p>كل فئة مصممة لتوفر لك أقصى درجات الراحة</p>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <div class="spec-header">الاقتصادية</div>
+                <ul>
+                    <li><i class="fas fa-chair"></i> كرسي مريح ومبطن</li>
+                    <li><i class="fas fa-tv"></i> شاشة أمامية متكاملة</li>
+                    <li><i class="fas fa-utensils"></i> طعام على مدار الساعة</li>
+                </ul>
+            </div>
+            <div class="spec-card featured">
+                <div class="spec-header">السياحية</div>
+                <ul>
+                    <li><i class="fas fa-couch"></i> كرسي مع وضعيات متغيرة</li>
+                    <li><i class="fas fa-desktop"></i> شاشة متكاملة متطورة</li>
+                    <li><i class="fas fa-clock"></i> خدمة سريعة متميزة</li>
+                </ul>
+            </div>
+            <div class="spec-card">
+                <div class="spec-header">الفاخرة</div>
+                <ul>
+                    <li><i class="fas fa-bed"></i> وضعية النوم الكامل + مساج</li>
+                    <li><i class="fas fa-star"></i> طعام حسب الشهية (A La Carte)</li>
+                    <li><i class="fas fa-tv"></i> شاشة أمامية ضخمة</li>
+                </ul>
+            </div>
+            <div class="spec-card royal-card">
+                <div class="spec-header">الملكية</div>
+                <ul>
+                    <li><i class="fas fa-hotel"></i> جناح خاص مع سرير حقيقي</li>
+                    <li><i class="fas fa-shower"></i> حمام خاص مع شاور</li>
+                    <li><i class="fas fa-lightbulb"></i> تحكم كامل في الأنوار</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -59,7 +101,20 @@
         <div class="booking-details">
             <p>المقعد المحدد: <span id="selectedSeatNum">-</span></p>
             <p>إجمالي السعر: <span id="totalPrice">0</span> درهم</p>
-            <button class="pay-btn" onclick="openPayment()">تأكيد ودفع</button>
+            <button class="pay-btn" onclick="processPayment()">تأكيد ودفع</button>
+        </div>
+    </section>
+
+    <section id="ticket-area" style="display:none;" class="ticket-section">
+        <div class="ticket">
+            <div class="ticket-header-design">SKYMASTER BOARDING PASS</div>
+            <div class="ticket-info">
+                <p><strong>المسافر:</strong> <span id="ticket-name"></span></p>
+                <p><strong>المقعد:</strong> <span id="ticket-seat"></span></p>
+                <p><strong>الدرجة:</strong> <span id="ticket-class"></span></p>
+                <p><strong>البوابة:</strong> A12</p>
+            </div>
+            <div class="barcode">|||| | || ||| | || ||| |</div>
         </div>
     </section>
 
@@ -92,7 +147,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 SkyMaster Airlines. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2026 SkyMaster Airlines. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script src="script.js"></script>
