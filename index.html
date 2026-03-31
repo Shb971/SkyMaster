@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyMaster | فخامة التحليق</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">SkyMaster</div>
+        <nav>
+            <ul>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#classes">الدرجات</a></li>
+                <li><a href="#booking">الحجز</a></li>
+                <li><a href="#contact">الشكاوى</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="hero">
+        <h1>مرحباً بكم في SkyMaster</h1>
+        <p>تجربة سفر تفوق الخيال تناسب جميع تطلعاتك</p>
+    </section>
+
+    <section class="login-section">
+        <div class="login-box">
+            <h3>تسجيل الدخول / إنشاء حساب</h3>
+            <input type="text" placeholder="الاسم الكامل">
+            <select id="income-select">
+                <option value="">اختر فئة الدخل (لترشيح الدرجة)</option>
+                <option value="economy">أقل من 1,500 درهم</option>
+                <option value="tourism">أقل من 2,000 درهم</option>
+                <option value="luxury">12,000 درهم فأعلى</option>
+                <option value="royal">35,000 درهم فأعلى</option>
+            </select>
+            <button onclick="checkClass()">دخول</button>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <h2>اختر مقعدك في طائرة SkyMaster</h2>
+        <div class="airplane-map" id="map">
+            </div>
+        <div class="legend">
+            <span class="l-royal">الملكية</span>
+            <span class="l-luxury">الفاخرة</span>
+            <span class="l-tourism">السياحية</span>
+            <span class="l-eco">الاقتصادية</span>
+        </div>
+    </section>
+
+    <section class="payment-section">
+        <button class="pay-btn" onclick="processPayment()">تأكيد الحجز والدفع</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
