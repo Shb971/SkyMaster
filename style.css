@@ -1,93 +1,72 @@
 :root {
     --gold: #D4AF37;
-    --dark-blue: #0A192F;
-    --silver: #C0C0C0;
-    --white: #FFFFFF;
+    --dark: #050A18;
+    --deep-blue: #0A192F;
+    --soft-white: #F4F7FB;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-    color: var(--dark-blue);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+
+body { background-color: var(--soft-white); scroll-behavior: smooth; }
 
 header {
-    background: var(--dark-blue);
-    color: var(--gold);
-    padding: 1rem 5%;
+    background: var(--dark);
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 1000;
 }
 
-.logo { font-size: 24px; font-weight: bold; text-transform: uppercase; }
+.logo { color: var(--gold); font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; }
 
-nav ul { list-style: none; display: flex; gap: 20px; }
-nav a { color: white; text-decoration: none; font-weight: 500; }
+nav ul { display: flex; list-style: none; gap: 25px; }
+nav a { color: white; text-decoration: none; transition: 0.3s; }
+nav a:hover { color: var(--gold); }
 
+/* الواجهة */
 .hero {
-    background: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
+    height: 80vh;
+    background: linear-gradient(rgba(5,10,24,0.7), rgba(5,10,24,0.7)), url('https://images.unsplash.com/photo-1540339832862-4745299807c3?q=80&w=2070') center/cover;
+    display: flex; align-items: center; justify-content: center; color: white; text-align: center;
 }
 
+.hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+
+.btn-gold {
+    background: var(--gold); color: var(--dark);
+    padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold;
+}
+
+/* صندوق الدخول */
+.auth-container { display: flex; justify-content: center; margin-top: -60px; }
 .login-box {
-    background: white;
-    padding: 2rem;
-    width: 300px;
-    margin: -50px auto 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    text-align: center;
+    background: white; padding: 40px; border-radius: 15px; width: 450px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* الطائرة والمقاعد */
+.airplane-body {
+    background: #fff; border: 2px solid #ddd; border-radius: 100px 100px 20px 20px;
+    width: 320px; margin: 50px auto; padding: 50px 20px;
 }
 
-button {
-    background: var(--gold);
-    color: var(--dark-blue);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-/* خريطة المقاعد */
-.airplane-map {
-    display: grid;
-    grid-template-columns: repeat(4, 50px);
-    gap: 15px;
-    justify-content: center;
-    padding: 20px;
-}
-
+.seats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .seat {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    background: #ccc;
-    cursor: pointer;
-    transition: 0.3s;
+    height: 40px; background: #e0e0e0; border-radius: 6px; cursor: pointer; transition: 0.2s;
 }
-
 .seat.royal { background: var(--gold); }
-.seat.luxury { background: var(--silver); }
+.seat.luxury { background: #8e9aaf; }
 .seat.selected { background: #27ae60 !important; transform: scale(1.1); }
 
-.legend { text-align: center; margin-top: 10px; }
-.legend span { margin: 0 10px; font-size: 14px; }
+/* قسم الطعام */
+.menu-container { display: flex; gap: 20px; padding: 40px 8%; }
+.menu-card { flex: 1; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.menu-img { height: 200px; background-size: cover; }
+.m1 { background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?w=500'); }
+.m2 { background-image: url('https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=500'); }
+
+/* الشكاوى */
+.contact-section { background: var(--dark); color: white; padding: 60px 8%; text-align: center; }
+.contact-form { max-width: 500px; margin: 0 auto; }
+input, textarea, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: none; }
