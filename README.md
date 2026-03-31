@@ -71,7 +71,7 @@
 </section>
 
 <footer style="background: #1a1a1a; color: white; text-align: center; padding: 30px; margin-top: 50px;">
-    <p>&copy; 2026 SkyMaster Airlines | جميع الحقوق محفوظة لـ عبيد</p>
+    <p>&copy; 2026 SkyMaster Airlines | جميع الحقوق محفوظة للمجموعة 3 الغنية عن تعريف</p>
 </footer>
 
 </body>
